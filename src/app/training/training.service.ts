@@ -16,7 +16,15 @@ export class TrainingService {
     {id: 'backward-lunges', name: 'Backward lunges', duration: 60, calories: 8},
     {id: 'jumping-jacks', name: 'Jumping Jacks', duration: 60, calories: 8}
   ];
-  private exercises: Exercise[] = [];
+  private exercises: Exercise[] = [
+    {id: 'crunches', name: 'Crunches', duration: 30, calories: 8, state: 'completed', date: new Date()},
+    {id: 'touch-toes', name: 'Touch Toes', duration: 180, calories: 15, state: 'completed', date: new Date()},
+    {id: 'side-lunges', name: 'Side Lunges', duration: 120, calories: 18, state: 'completed', date: new Date()},
+    {id: 'burpees', name: 'Burpees', duration: 60, calories: 8, state: 'completed', date: new Date()},
+    {id: 'walking-high-knees', name: 'Walking high knees', duration: 60, calories: 8, state: 'completed', date: new Date()},
+    {id: 'burpees', name: 'Burpees', duration: 60, calories: 8, state: 'completed', date: new Date()},
+    {id: 'burpees', name: 'Burpees', duration: 60, calories: 8, state: 'completed', date: new Date()}
+  ];
   private runningExercise: Exercise;
 
   getAvailableExercises() {
@@ -48,5 +56,9 @@ export class TrainingService {
 
   getRunningExercise() {
     return {...this.runningExercise};
+  }
+
+  getPastExercises() {
+    return this.exercises.slice();
   }
 }
