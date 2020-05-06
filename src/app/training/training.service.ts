@@ -27,9 +27,6 @@ export class TrainingService {
   ];
   private runningExercise: Exercise;
 
-  getAvailableExercises() {
-    return this.availableExercises.slice();
-  }
 
   startExercise(selectedId: string) {
     this.runningExercise = this.availableExercises.find(ex => ex.id === selectedId);
