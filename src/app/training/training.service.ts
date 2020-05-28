@@ -4,7 +4,7 @@ import { Subject, Subscription } from 'rxjs';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { map } from 'rxjs/operators';
 import { firestore } from 'firebase';
-import { UiService } from '../shared/ui.service';
+import { UIService } from '../shared/ui.service';
 
 
 @Injectable({providedIn: 'root'})
@@ -19,7 +19,7 @@ export class TrainingService {
   private fbSubs: Subscription[] = [];
 
 
-  constructor(private db: AngularFirestore, private uiService: UiService) {
+  constructor(private db: AngularFirestore, private uiService: UIService) {
   }
 
   fetchAvailableExercises() {

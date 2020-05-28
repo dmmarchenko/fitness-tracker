@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { AuthService } from '../auth.service';
-import { UiService } from '../../shared/ui.service';
+import { UIService } from '../../shared/ui.service';
 import { Subscription } from 'rxjs';
 
 const MINIMAL_ALLOWED_AGE = 18;
@@ -16,7 +16,7 @@ export class SignupComponent implements OnInit, OnDestroy {
   isLoading = false;
   private loadingSub: Subscription;
 
-  constructor(private authService: AuthService, private uiService: UiService) {
+  constructor(private authService: AuthService, private uiService: UIService) {
   }
 
   ngOnInit(): void {

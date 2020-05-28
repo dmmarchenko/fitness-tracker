@@ -3,7 +3,7 @@ import { TrainingService } from '../training.service';
 import { Exercise } from '../exercise.model';
 import { NgForm } from '@angular/forms';
 import { Subscription } from 'rxjs';
-import { UiService } from '../../shared/ui.service';
+import { UIService } from '../../shared/ui.service';
 
 @Component({
   selector: 'app-new',
@@ -17,7 +17,7 @@ export class NewComponent implements OnInit, OnDestroy {
   private exerciseChangedSub: Subscription;
   private loadingSub: Subscription;
 
-  constructor(private trainingService: TrainingService, private uiService: UiService) {
+  constructor(private trainingService: TrainingService, private uiService: UIService) {
   }
 
   ngOnInit(): void {
