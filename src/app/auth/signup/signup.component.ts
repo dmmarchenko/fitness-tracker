@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { AuthService } from '../auth.service';
+import { UiService } from '../../shared/ui.service';
+import { Subscription } from 'rxjs';
 
 const MINIMAL_ALLOWED_AGE = 18;
 
@@ -9,13 +11,16 @@ const MINIMAL_ALLOWED_AGE = 18;
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.css']
 })
-export class SignupComponent implements OnInit {
+export class SignupComponent implements OnInit, OnDestroy {
   maxDate: Date;
+  isLoading = false;
+  private loadingSub: Subscription;
 
-  constructor(private authService: AuthService) {
+  constructor(private authService: AuthService, private uiService: UiService) {
   }
 
   ngOnInit(): void {
+    this.loadingSub = this.uiService.loadingStateChanged.subscribe(isLoading => this.isLoading = isLoading);
     this.maxDate = new Date();
     this.maxDate.setFullYear(this.maxDate.getFullYear() - MINIMAL_ALLOWED_AGE);
   }
@@ -25,5 +30,9 @@ export class SignupComponent implements OnInit {
       email: f.value.email,
       password: f.value.password
     });
+  }
+
+  ngOnDestroy(): void {
+    this.loadingSub.unsubscribe();
   }
 }
