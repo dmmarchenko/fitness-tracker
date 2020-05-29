@@ -30,6 +30,8 @@ export class TrainingService {
         this.exercisedChanged.next([...result]);
       }, () => {
         this.uiService.loadingStateChanged.next(false);
+        this.uiService.showSnackBar('Fetching exercises failed, please try again', 3000);
+        this.exercisedChanged.next(null);
       }));
   }
 
